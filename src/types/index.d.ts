@@ -24,3 +24,15 @@ export interface ICategory {
   user: IUser | string;
   isEditable: boolean;
 }
+
+export interface ITask {
+  _id: string;
+  name: string;
+  categoryId: string;
+  isCompleted: boolean;
+  date: string;
+  userId: string;
+  isEditable: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
