@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { connectDB } from './config/db';
 import userRoutes from './routes/user.routes';
+import categoryRoutes from './routes/category.routes';
 const app = express();
 
 connectDB();
@@ -15,7 +16,8 @@ app.use(express.json());
 
 const PORT = 8080 || process.env.PORT!;
 
-app.use('/user', userRoutes); 
+app.use('/users', userRoutes);
+app.use('/categories', categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
