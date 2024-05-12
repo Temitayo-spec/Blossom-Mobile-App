@@ -19,6 +19,30 @@ const getAllCategories = async (req: AuthRequest, res: Response) => {
   }
 };
 
+/**
+ *
+ * @param request TODO: Record get category by id
+ * @param response
+ * @returns
+ */
+
+const getCategoryById = async (
+  request: AuthRequest,
+  response: Response
+) => {
+  try {
+    const { id } = request.params
+    const category = await Category.findOne({
+      _id: id,
+    })
+    return response.send(category)
+  } catch (error) {
+    response.send({ error: "Something went wrong" })
+    console.log("error in getAllCategories", error)
+    throw error
+  }
+}
+
 const createCategory = async (req: AuthRequest, res: Response) => {
   try {
     const { name, color, icon, isEditable }: ICategory = req.body;
@@ -93,4 +117,10 @@ const updateCategory = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export { getAllCategories, createCategory, deleteCategory, updateCategory };
+export {
+  getAllCategories,
+  createCategory,
+  deleteCategory,
+  updateCategory,
+  getCategoryById,
+};
